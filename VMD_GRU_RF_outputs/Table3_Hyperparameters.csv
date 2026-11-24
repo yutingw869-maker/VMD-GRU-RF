@@ -1,0 +1,9 @@
+Parameter,Value
+VMD modes (K),5
+VMD alpha,2000
+Window size,26
+GRU units,30
+Epochs,15
+Batch size,16
+RF trees,100
+Random seed,42

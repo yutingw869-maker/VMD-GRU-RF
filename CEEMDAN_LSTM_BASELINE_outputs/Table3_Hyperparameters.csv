@@ -1,0 +1,8 @@
+Parameter,Value
+CEEMDAN noise seed,42
+Window size,26
+LSTM units,30
+Epochs,20
+Batch size,16
+Early stopping patience,10
+Random seed,42
