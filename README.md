@@ -28,3 +28,26 @@
 ├── P888.csv                             # 聚丙烯期货主力合约数据（如未上传需自行放置）
 ├── CSI300.csv                           # 沪深300股指期货主力合约数据（如未上传需自行放置）
 └── README.md                            # 项目说明文档
+
+## 3. 数据说明与准备
+
+模型默认在主程序入口读取以下两个数据集（若文件不存在会自动跳过并提示）：
+* `P888.csv`：商品期货主力合约数据（日度有效样本 2,917 条）[cite: 10, 17, 18]
+* `CSI300.csv`：沪深 300 股指期货主力合约数据（日度有效样本 2,677 条）[cite: 10, 17, 18]
+
+> **数据格式说明**：脚本会自动识别 `trading_date` 或 `date` 日期列以及 `close` 收盘价列（若含高频日内记录，将按日期聚合日收盘价并计算波动率代理指标）[cite: 7, 17, 18]。请确保本地数据路径与 Notebook 中 `datasets` 配置一致。
+
+---
+
+## 4. 环境依赖与运行方式
+
+### 环境配置
+建议在 Python 3.10 环境下安装所需依赖：
+
+```bash
+pip install numpy pandas matplotlib scipy statsmodels scikit-learn tensorflow vmdpy EMD-signal
+
+## 5.运行步骤
+将 P888.csv 与 CSI300.csv 放置于工作目录（或修改代码中对应的文件路径）。
+打开并顺序运行 VMD_GRU_RF.ipynb 或 CEEMDAN_LSTM_BASELINE.ipynb[cite: 17, 18]。
+运行完成后，脚本会自动生成：可视化图表：原始波动率序列图（Figure 1）、分解分量图（Figure 2）、各分量预测对比图（Figure 3）、最终预测对比图（Figure 4）[cite: 17, 18]。统计与评估结果：描述统计表、模型评估指标 CSV 文件，以及可直接用于论文排版的 LaTeX 三线表输出[cite: 17, 18]。
